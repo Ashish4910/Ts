@@ -6,3 +6,54 @@ what is hashmap
 what is hashtree
 what is list , and linklist
 what is exception
+
+
+==> What is SQL ?
+==> SQL is a Structure Query language 
+==> SQL is standard Language for dealing with Relational Database which can be used to create , read ,update ,and Delete database records
+
+
+===> What is database ?
+1. Database is a systematic collection of data which support storage and manuipulation of data in easy way
+2. Advantage of database 
+                1.Managing large amoubnt of data
+                2.Accuracy
+                3.Ease of Data Upload
+                4.Data security
+                5.Data Integrity
+
+==> What is DBMS ?
+1. DBMS stand for Database management system 
+2. DBMS is a system software responsible for creation , retrieval , update and management of database .
+3. DBMS ensures that our data is consistent, organized, and is easily accessible by serving as an interface between the database and its 
+   end-users or application software
+
+===> What is RDBMS? How is it different from DBMS?
+1.RDBMS stands for Relational Database Management System.
+2. The key difference here, compared to DBMS, is that RDBMS stores data in the form of a collection of tables, and relations can be defined between the common fields of these tables.
+3. Most modern database management systems like MySQL, Microsoft SQL Server, Oracle, IBM DB2, and Amazon Redshift are based on RDBMS.
+
+==> What is the difference between SQL and MySQL?
+1. SQL is a standard language for retrieving and manipulating structured databases.
+2. On the contrary, MySQL is a relational database management system, like SQL Server, Oracle or IBM DB2, that is used to manage SQL databases.
+
+==> What are Tables and Fields?
+1.A table is an organized collection of data stored in the form of rows and columns.
+2. Columns can be categorized as vertical and rows as horizontal.
+3. The columns in a table are called fields while the rows can be referred to as records.
+
+==>  What are Constraints in SQL?
+1. SQL constraints are used to specify rules for the data in a table.
+2. Constraints are used to limit the type of data that can go into a table.
+3.This ensures the accuracy and reliability of the data in the table.
+4.If there is any violation between the constraint and the data action, the action is aborted.
+
+Type of Constraints ==> 
+
+1. NOT NULL - Restricts NULL value from being inserted into a column.
+2. CHECK - Verifies that all values in a field satisfy a condition.
+3. DEFAULT - Automatically assigns a default value if no value has been specified for the field.
+4. UNIQUE - Ensures unique values to be inserted into the field.
+5. INDEX - Indexes a field providing faster retrieval of records.
+6. PRIMARY KEY - Uniquely identifies each record in a table.
+7. FOREIGN KEY - Ensures referential integrity for a record in another table.
