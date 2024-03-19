@@ -1,0 +1,8 @@
+what is foreign key 
+what is string 
+what is array 
+what is different between array and arraylist
+what is hashmap
+what is hashtree
+what is list , and linklist
+what is exception
