@@ -16,7 +16,7 @@ what is exception
 ===> What is database ?
 1. Database is a systematic collection of data which support storage and manuipulation of data in easy way
 2. Advantage of database 
-                1.Managing large amoubnt of data
+                1.Managing large amount of data
                 2.Accuracy
                 3.Ease of Data Upload
                 4.Data security
@@ -162,7 +162,31 @@ right join
 table b 
 on a.id = b.id;
 
+===>What is  FULL (OUTER) JOIN ?
+1. Retrieves all the records where there is a match in either the left or right table.
+
+SELECT *
+FROM Table_A A
+FULL JOIN Table_B B
+ON A.col = B.col
+
+==> What is a Self-Join ?
+1. A self JOIN is a case of regular join where a table is joined to itself based on some relation between its own column(s). 
+2. Self-join uses the INNER JOIN or LEFT JOIN clause and a table alias is used to assign different names to the table within the query.
+
+SELECT A.emp_id AS "Emp_ID",A.emp_name AS "Employee",
+B.emp_id AS "Sup_ID",B.emp_name AS "Supervisor"
+FROM employee A, employee B
+WHERE A.emp_sup = B.emp_id;
 
 
+==> What is Cross Join ?
+1. A cross join in SQL , also known as a Cartesian join,
+2. It is a type of join operation in SQL that combines each row from the first table with every row from the second table, resulting in a Cartesian product. 
+3. Unlike other join types that rely on specific join conditions, a cross join does not have any explicit join condition specified in the query.
+
+SELECT *
+FROM table1
+CROSS JOIN table2;
 
 
