@@ -190,3 +190,65 @@ FROM table1
 CROSS JOIN table2;
 
 
+==> What is an Index? Explain its different types ?
+1. An index is a data structure in a database that improves the speed of data retrieval operations on a table.
+2. It helps in finding specific data quickly. Imagine you have a huge book (database), and instead of reading through every page to find what you need, you have an index at the back that tells you exactly which page to look at.
+
+There are different types of indexes that can be created for different purposes:
+1.Unique and Non-Unique Index:
+2.Clustered and Non-Clustered Index:
+
+
+==> Unique Index:==>
+1. Unique Index: Think of it like a unique ID number assigned to each row in a table. 
+2.It ensures that each row is distinct, like each person having a unique social security number.
+
+==>Non-Unique  Index==>
+1. Non-Unique Index: It's more like an index in a library.
+2.Different books might have the same subject index, but it helps in finding them faster.
+
+
+==>Clustered  Index: 
+1. Clustered indexes are indexes whose order of the rows in the database corresponds to the order of the rows in the index.
+2.This is why only one clustered index can exist in a given table, whereas, multiple non-clustered indexes can exist in the table.
+==> example ==> 
+Clustered Index: Imagine a book where the pages are arranged in alphabetical order of the chapter titles. So, if you're looking for a specific chapter, you know exactly where to find it without flipping through the whole book. This is what a clustered index does—it physically arranges the data in the order of the index.
+
+==>Non-Clustered Index :
+1. non-clustered indexes is that the database manager attempts to keep the data in the database in the same order as the corresponding keys appear in the clustered index.
+
+example ==>
+Non-Clustered Index: This is like having an index at the end of the book that tells you where each chapter is located. It doesn't change the physical order of the pages; instead, it's like a separate list pointing to the actual data.
+
+
+==> What is the difference between Clustered and Non-clustered index?
+As explained above, the differences can be broken down into three small factors -
+
+1. Clustered index modifies the way records are stored in a database based on the indexed column. A non-clustered index creates a separate entity within the table which references the original table.
+2. Clustered index is used for easy and speedy retrieval of data from the database, whereas, fetching records from the non-clustered index is relatively slower.
+3. In SQL, a table can have a single clustered index whereas it can have multiple non-clustered indexes
+
+==> What is Data Integrity?
+1. Data Integrity is the assurance of accuracy and consistency of data over its entire life-cycle and is a critical aspect of the design
+example ==>
+These are like the rules you follow when baking. For instance, if the recipe says "use 2 cups of flour," you don't use 3 cups. Similarly, integrity constraints set rules for how data should be entered into a system or database, ensuring it meets certain standards or business rules.
+
+
+==> What is a Query?
+1. A query is a request for data or information from a database table or combination of tables. 
+2. A database query can be either a select query or an action query.
+
+==> What is a Subquery? What are its types?
+1. A subquery is a query within another query, also known as a nested query or inner query. 
+
+example==>
+Imagine you have a database of students and their grades. You might want to know who the top-performing students are in a particular class. But to find that out, you first need to know what the highest grade is. So, you'd ask the database to find the highest grade first (that's the subquery), and then use that result to find the students who got that grade (the main query).
+
+==> What is the SELECT statement?
+1. SELECT operator in SQL is used to select data from a database. 
+2. The data returned is stored in a result table, called the result-set.
+example ==>
+SELECT * FROM myDB.students;
+
+
+
