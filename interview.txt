@@ -360,3 +360,203 @@ Note: All aggregate functions described above ignore NULL values except for the 
 7.ROUND() - Calculates the round-off integer value for a numeric field (or decimal point values).
 8. NOW() - Returns the current date & time.
 9. FORMAT() - Sets the format to display a collection of values
+
+
+==> . What is User-defined function? What are its various types?
+1. A user-defined function (UDF) in SQL is a custom function created by the user to perform specific tasks. 
+2.These functions can accept parameters, execute complex logic, and return a value or a table as output.
+
+A. Scalar Function: This type of UDF returns a single scalar (or atomic) value, such as an integer, string, or date. They are used when you need to perform a computation on input parameters and return a single result.
+
+Example:
+CREATE FUNCTION CalculateDiscount(@price DECIMAL(10, 2), @discount DECIMAL(5, 2))
+RETURNS DECIMAL(10, 2)
+AS
+BEGIN
+    DECLARE @finalPrice DECIMAL(10, 2);
+    SET @finalPrice = @price - (@price * @discount / 100);
+    RETURN @finalPrice;
+END;
+
+B. Table-Valued Function (TVF): This type of UDF returns a table as output. There are two subtypes of TVFs:
+
+1 . Inline TVF: This function returns a table data type based on a single SELECT statement. It's essentially a shorthand way of writing complex queries that return tabular results.
+
+Example:
+CREATE FUNCTION GetProductsByCategory(@categoryID INT)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT ProductID, ProductName, UnitPrice
+    FROM Products
+    WHERE CategoryID = @categoryID
+);
+
+2.  Multi-statement TVF: This function also returns a tabular result-set, but it allows multiple SELECT statements inside the function body. This can be useful for more complex logic or when you need to perform several operations to generate the final result.
+
+Example:
+
+CREATE FUNCTION GetEmployeeHierarchy(@employeeID INT)
+RETURNS @Hierarchy TABLE
+(
+    EmployeeID INT,
+    ManagerID INT
+)
+AS
+BEGIN
+    INSERT INTO @Hierarchy (EmployeeID, ManagerID)
+    SELECT EmployeeID, ManagerID
+    FROM Employees
+    WHERE EmployeeID = @employeeID;
+
+    WHILE @@ROWCOUNT > 0
+    BEGIN
+        INSERT INTO @Hierarchy (EmployeeID, ManagerID)
+        SELECT e.EmployeeID, e.ManagerID
+        FROM Employees e
+        JOIN @Hierarchy h ON e.ManagerID = h.EmployeeID
+    END;
+    RETURN;
+END;
+
+==> What is OLTP?
+1. OLTP stand for Online Transaction processing 
+2. OLTP, or Online Transaction Processing, is like the nerve center of many businesses' digital operations. It's a type of software system designed to handle lots of transactions quickly and efficiently. 
+
+Imagine you're running an online store. Every time a customer makes a purchase, that's a transaction. Now, if your store is popular, you're going to have lots of customers making lots of purchases all the time. That's where OLTP comes in.
+
+Here's how it works: 
+
+1. **Fast Transactions**: OLTP systems are built to handle lots of these transactions rapidly. So, when a customer buys something, the system quickly updates your inventory, processes payment, and records the sale. 
+
+2. **Concurrency**: Lots of people might be buying things at the same time. OLTP systems are good at handling all these transactions happening simultaneously without things getting mixed up.
+
+3. **Decentralized**: To avoid putting too much strain on any one part of the system, OLTP systems are often spread out across different servers or locations. This helps ensure that if one part goes down, the whole system doesn't crash.
+
+4. **Simple Queries, Quick Responses**: The queries (requests for information) made to OLTP systems are usually straightforward and quick. They're focused on specific transactions and need to be answered fast. For example, checking if an item is in stock or processing a payment.
+
+In simple terms, OLTP is like the efficient cashier at a busy store. It handles lots of transactions smoothly, keeps things organized, and makes sure everything runs smoothly even when there's a lot happening at once.
+
+
+
+===> What is OLAP ?
+Absolutely! Here's a simplified explanation you can use in an interview:
+
+**OLAP (Online Analytical Processing)**:
+
+- **What it does**: OLAP helps people look at big chunks of data to find important patterns and trends.
+- **Think of it as**: A special tool that helps you see the big picture in data, kind of like zooming out on a map to see the whole area instead of just one street.
+- **Key features**:
+  - **Big Picture Analysis**: OLAP helps you understand trends and patterns across lots of data, not just individual bits.
+  - **Complex Questions**: It's good at answering tough questions about data, like "What are our sales trends over the past year?" or "Which products are doing best in different places?"
+  - **Organized Data**: OLAP makes data easy to understand by organizing it neatly, like sorting it by time or product categories.
+
+So, OLAP is like a special tool for looking at a lot of data and finding the important stuff. It helps you make smart decisions based on what's happening overall, not just in one little piece.
+
+
+===> What is store Procedure ? 
+
+Sure, let's simplify it:
+
+**Stored Procedure**:
+
+- **What it is**: A stored procedure is like a pre-written set of instructions stored in a database. It's a way to save a sequence of actions that you might need to perform often.
+- **Think of it as**: A recipe stored in a cookbook. Instead of writing out the steps every time you want to cook a dish, you can just follow the instructions in the cookbook.
+- **Key features**:
+  - **Stored in the Database**: Stored procedures live inside the database, not in the code of an application. They're like special functions that the database knows how to run.
+  - **Reusable**: Once you create a stored procedure, you can use it over and over again without having to write the same code multiple times.
+  - **Security and Control**: They can help control who can access the data in the database. Since users interact with the database through stored procedures, you can limit what they're allowed to do.
+  
+**Example**:
+
+Imagine you have a database of students, and you often need to fetch all the students' information. Instead of writing the same SQL query every time, you can create a stored procedure like this:
+
+```sql
+use advancetask;
+DELIMITER $$
+
+CREATE PROCEDURE FetchAllStudents()
+BEGIN
+    SELECT * FROM employee;
+END $$
+
+DELIMITER ;
+
+```
+
+Now, whenever you need to get all the students' information, you can just call the `FetchAllStudents` stored procedure instead of writing out the SQL query again and again. It's like having a shortcut to quickly get the data you need from the database.
+
+
+==> Called the Store procedure through Java Code 
+ import java.sql.*;
+
+public class Main {
+    public static void main(String[] args) {
+        // JDBC URL, username, and password
+        String url = "jdbc:mysql://localhost:3306/myDB";
+        String user = "username";
+        String password = "password";
+
+        // Connection and Statement objects
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+
+// FetchAllStudents() is my storeprocedure name 
+//use advancetask;
+//DELIMITER $$
+//
+//CREATE PROCEDURE FetchAllStudents()
+//BEGIN
+ //   SELECT * FROM employee;
+//END $$
+//
+// DELIMITER ;
+
+// above is the step how store procedure is created in the mysql table 
+
+             CallableStatement stmt = conn.prepareCall("{call FetchAllStudents()}")) {
+
+            // Execute the stored procedure
+            ResultSet rs = stmt.executeQuery();
+
+            // Process the result set
+            while (rs.next()) {
+                // Retrieve data from the result set
+                int studentId = rs.getInt("student_id");
+                String studentName = rs.getString("student_name");
+
+                // Do something with the data
+                System.out.println("Student ID: " + studentId + ", Name: " + studentName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+==>  How to create empty tables with the same structure as another table?
+1. CREATE TABLE Students_copy LIKE Students; ==> applicable in MYSQL
+2. select * INTO duplicateEmployee  from employee  where 1 =2
+3. CREATE TABLE Students_copy AS SELECT * FROM Students WHERE 1 = 2;
+
+
+==> What is Pattern Matching in SQL?
+Sure, let's simplify the concept of pattern matching in SQL:
+
+**Pattern Matching in SQL**:
+
+- **What it does**: Pattern matching in SQL allows you to search for data based on a pattern rather than a specific value. It's like using a wildcard in a game of "guess the word" to match parts of a word you don't know.
+- **How it works**: SQL provides the `LIKE` operator along with wildcards to perform pattern matching. Wildcards are special characters that represent unknown or variable parts of a string.
+- **Key components**:
+  - `%` wildcard: Matches zero or more characters of any type. It's like saying "anything can come before or after this part of the pattern."
+  - `_` wildcard: Matches exactly one character of any type. It's like a placeholder for a single character in the pattern.
+- **Examples**:
+  - Searching for students with first names beginning with "K": `SELECT * FROM students WHERE first_name LIKE 'K%'`
+  - Searching for students with a "K" anywhere in their first name: `SELECT * FROM students WHERE first_name LIKE '%K%'`
+  - Searching for students with a "K" at the third position in their first name: `SELECT * FROM students WHERE first_name LIKE '__K%'`
+  - Searching for students with first names of exactly four characters: `SELECT * FROM students WHERE first_name LIKE '____'`
+  - Seaching for student with first name that end with x characters : ` SELECT * FROM students WHERE first_name LIKE '%x';
+
+
+So, pattern matching in SQL helps you find data based on flexible patterns rather than exact values, using wildcards like `%` and `_` to represent unknown parts of the data. It's handy when you're not sure about the exact information you're looking for.
