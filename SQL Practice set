@@ -1,0 +1,4 @@
+Find the Second highest second salary of Employee.
+==> select max(salary) from 
+add_employee
+where salary < (select max(salary) from add_employee);
