@@ -1,4 +1,33 @@
-Find the Second highest second salary of Employee.
-==> select max(salary) from 
+Q1==> Find the Second highest second salary of Employee?
+==> 
+select max(salary) from 
 add_employee
 where salary < (select max(salary) from add_employee);
+
+
+Q2. How to get all the data from two tables?
+==> Select * from
+tabel_A 
+join table_B
+on table_A.id = table_B.id;
+
+
+Q3. What is deffenece between Delete, Drop, Truncate?
+A. DELETE removes specific rows from a table based on conditions and can be rolled back.
+B. DROP TABLE removes the entire table structure and its data permanently.
+C. TRUNCATE TABLE removes all rows from a table without logging individual row deletions, and it cannot be rolled back.
+
+
+Q4. What is view. ?
+A. View in sql is virtual table based on the result set of the sql statement 
+B. View contain rows and column , just like the real table .
+
+Q5. Can i drop view.?
+A. Yes, you can drop a view in SQL. Dropping a view removes it from the database schema.
+B. (DROP VIEW IF EXISTS my_view;)==> query
+
+
+
+
+
+
