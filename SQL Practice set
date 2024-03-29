@@ -26,8 +26,41 @@ Q5. Can i drop view.?
 A. Yes, you can drop a view in SQL. Dropping a view removes it from the database schema.
 B. (DROP VIEW IF EXISTS my_view;)==> query
 
+Q6. Find the duplicate records ?
+A. select firstName , lastName , count(*) 
+from employee 
+group by firstName , lastName
+having count(*) >1;
 
+==> Explaination => here first it will count name and lastname then group it by firstname and lastName 
+and if more than one name and lastname is founded with same entity then it will display 
 
+Q7. Difference between reqular expression and LIKE operator.
+A. Regular expressions and the LIKE operator are both used for pattern matching in SQL, but they have some differences:
+B. LIKE: The LIKE operator allows for simple pattern matching using wildcard characters such as % (matches any sequence of characters) and _ (matches any single character).
+C. Regular Expression: Regular expressions (regex) provide more powerful pattern matching capabilities, allowing for more complex pattern specifications including character classes, quantifiers, alternations, and more.
 
+Example 1: Using LIKE Operator
+Suppose you have a table called employees with a column named first_name, and you want to retrieve all employees whose first names start with "J":
 
+sql
 
+SELECT *
+FROM employees
+WHERE first_name LIKE 'J%';
+This query will retrieve all rows from the employees table where the first_name column starts with the letter "J".
+
+Example 2: Using Regular Expression
+Suppose you want to retrieve all employees whose first names contain exactly three characters and start with "J":
+
+sql
+
+SELECT *
+FROM employees
+WHERE first_name REGEXP '^J.{2}$';
+
+In this query, ^ indicates the start of the string, J specifies the first character to match, .{2} indicates any
+two characters in between, and $ indicates the end of the string. This regular expression ensures that the first_name 
+contains exactly three characters and starts with "J".
+
+Q8. Explain indexes in SQL ?
