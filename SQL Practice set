@@ -64,3 +64,14 @@ two characters in between, and $ indicates the end of the string. This regular e
 contains exactly three characters and starts with "J".
 
 Q8. Explain indexes in SQL ?
+1. An index is a data structure in a database that improves the speed of data retrieval operations on a table.
+2. It helps in finding specific data quickly. Imagine you have a huge book (database), and instead of reading through every page to find what you need, you have an index at the back that tells you exactly which page to look at.
+
+==> Different type of index
+==> Unique Index:==>
+1. Unique Index: Think of it like a unique ID number assigned to each row in a table. 
+2.It ensures that each row is distinct, like each person having a unique social security number.
+
+==>Non-Unique  Index==>
+1. Non-Unique Index: It's more like an index in a library.
+2.Different books might have the same subject index, but it helps in finding them faster.
