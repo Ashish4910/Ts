@@ -67,7 +67,10 @@ Q8. Explain indexes in SQL ?
 1. An index is a data structure in a database that improves the speed of data retrieval operations on a table.
 2. It helps in finding specific data quickly. Imagine you have a huge book (database), and instead of reading through every page to find what you need, you have an index at the back that tells you exactly which page to look at.
 
-==> Different type of index
+==> There are different types of indexes that can be created for different purposes:
+1.Unique and Non-Unique Index:
+2.Clustered and Non-Clustered Index:
+
 ==> Unique Index:==>
 1. Unique Index: Think of it like a unique ID number assigned to each row in a table. 
 2.It ensures that each row is distinct, like each person having a unique social security number.
@@ -75,3 +78,100 @@ Q8. Explain indexes in SQL ?
 ==>Non-Unique  Index==>
 1. Non-Unique Index: It's more like an index in a library.
 2.Different books might have the same subject index, but it helps in finding them faster.
+
+
+==> Clustered :==>
+Cluster index is like as data appear to the database and there is one cluster index exist in the db i.e a book has page 
+
+==> Non cluster :==> 
+in non cluster index is klike we have a table that giving information about the book where is chapter located 
+
+
+Q10. How to get row count in SQL ?
+
+select count(*) from 
+employee_management.add_employee;
+
+
+Q11. Difference between " % " and " _ " operators ?
+1. In SQL, the "%" and "_" operators are both used in pattern matching within the context of the LIKE predicate
+2. In summary, "%" matches zero or more characters, while "_" matches exactly one character. These operators are 
+commonly used in conjunction with the LIKE predicate to perform pattern matching in SQL queries.
+
+
+Q12. Get Manager who reports maximum number of employees ?
+
+SELECT e.ManagerID, COUNT(*) AS NumberOfEmployees
+FROM Employees e
+GROUP BY e.ManagerID
+ORDER BY NumberOfEmployees DESC
+LIMIT 1;
+
+1.We assume that there is a column in the Employees table called ManagerID, which represents the ID of the manager for each employee.
+2.We use the COUNT(*) function to count the number of employees for each manager.
+3.We group the results by the ManagerID.
+4.We order the results by the number of employees in descending order.
+5.We use the LIMIT 1 clause to retrieve only the top row, which corresponds to the manager with the maximum number of employees.
+
+
+
+Q14. List the ID of of manager who is havinng max nuber of reportings ?
+
+SELECT ManagerID, COUNT(*) AS NumberOfReports
+FROM Employees
+GROUP BY ManagerID
+ORDER BY NumberOfReports DESC
+LIMIT 1;
+
+Q15. What is Composite key ?
+
+1. A composite key, also known as a composite primary key or compound key.
+2. It's a combination of two or more columns in a database table that uniquely identifies each row within that table
+3. Unlike a single-column primary key, which consists of only one column, a composite key consists of multiple columns.
+
+CREATE TABLE Employees (
+    DepartmentID INT,
+    EmployeeID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    PRIMARY KEY (DepartmentID, EmployeeID)
+);
+
+In this example, the combination of DepartmentID and EmployeeID forms a composite primary key for the Employees table.
+Each row in the table will be uniquely identified by its DepartmentID and EmployeeID values.
+
+
+Q16. Difference between PrimaryKey, foreign Key, Unique Key
+
+1. Primary Key:
+
+A. A primary key is a column or set of columns in a table that uniquely identifies each row in that table.
+B. It must contain unique values, and it cannot contain NULL values.
+C. There can only be one primary key defined for a table.
+D. Primary keys are typically used as the main method of referencing and accessing individual rows within a table.
+E. It's often used to establish relationships between tables in a database.
+F. Example: In a table of employees, the employee ID might be the primary key because it uniquely identifies each employee.
+
+
+2. Foreign Key:
+
+A. A foreign key is a column or set of columns in a table that refers to the primary key or a unique key in another table.
+B. It establishes a link or relationship between two tables by enforcing referential integrity constraints.
+C. The values in the foreign key column(s) must match the values in the primary key or unique key column(s) in the referenced t
+   able, or they can be NULL if the foreign key column allows NULL values.
+D. Foreign keys help maintain the integrity of data between related tables and ensure that related data remains consistent.
+E. Example: In a table of orders, there might be a foreign key column referencing the customer ID from a table of customers,
+     ensuring that each order is associated with a valid customer.
+
+3. Unique Key:
+
+A. A unique key is a column or set of columns in a table that ensures the values in those columns are unique across all rows in the table.
+B. Unlike a primary key, a unique key can contain NULL values, but if a column is defined as part of a unique key, only one NULL value is allowed.
+C. There can be multiple unique keys defined for a table.
+D. Unique keys are used to enforce uniqueness constraints on columns other than the primary key and are often used to prevent duplicate values in specific columns.
+E. Example: In a table of products, the product code might be a unique key because each product should have a unique code.
+
+
+Q17. Create a new empty table from existing table with same columns.
+
+create table employee_copy like employee.
