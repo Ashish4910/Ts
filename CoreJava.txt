@@ -1,0 +1,519 @@
+Class
+==============================================================================
+Ans: A class is a template for an object, and an object is an instance of a class.
+     In side class we can declare variable and we can create method based on our requirment.
+     variable is known as state of class and method is known as behavior of class.
+
+Object-
+=================================================================================
+    Object is an instance of class.
+    Using new keyword we can create an object of that class.
+    The 'new' keyword dynamically allocates(that is, allocates at run time)memory for an object & returns a reference to it.
+
+Constructor
+==================================================================================
+Defination-
+	A constructor in Java is a special method that is used to initialize objects.
+	the main purpose of constructor is to initialize objects.
+	first object will be created after that initialization will happen.
+---------------------------------------------------------------------------------
+Characterisitics-
+	1.Constructor name must be same as class name
+	2.To declare constructor 4 modifiers are present-
+		a) Public
+		b) Private
+		c) Default
+		d) Protected
+		If u r not use any modifirea to create constractor, it will take default modifieare.
+	3.Constructor does not have return type if will try to return then compiler will consider as method not a constructor.
+	4.When we create a class and we dont declare any constructor then by default compiler will create a default constructor.
+	5.But if u create a constructor in your class then compiler will take that constructor only it wont create any default constructor. 
+	6.First line of constructor is this() and super() wether u will declare it or not.
+	Example:
+	class Test{
+		Test()
+		{
+		   super();
+		}
+	}
+	tricky:
+	Any class will have a default constructor, does not matter if we declare it in the class or not. If we inherit a class,
+	then the derived class must call its super class constructor. It is done by default in derived class.
+	If it does not have a default constructor in the derived class, the JVM will invoke its default constructor and call
+	the super class constructor by default. If we have a parameterised constructor in the derived class still it calls the
+	default super class constructor by default. In this case, if the super class does not have a default constructor,
+	instead it has a parameterised constructor, then the derived class constructor should explicitly call the
+	parameterised super class constructor.
+----------------------------------------------------------------------------
+super() 
+----------------------------------------------------------------------------
+	super() method always call parent class constructor, if ur class not extends any class by default internally it will extends Object class. 
+	Thats why it will call Object class constructor.
+	bcoz in java root class is "Object Class".
+
+--------------------------------------------------------------------------------
+This(): This() method refer current class constructor.
+--------------------------------------------------------------------------------
+this and super key word:
+--------------------------------------------------------------------------------
+super : super keyword basicly use to refer parent class instance valriables during insilization.
+
+this : this keyword basiclly use insilization current class instance variable
+	or this keyword used to refer current object.
+---------------------------------------------------------------------------------
+==================================================================================
+Scanarios 1:
+==================================================================================
+	if SubClass extends SuperClass and we are creating object of SubClass during insilization constrocter will call on that time
+	First SuperClass defoult(no-argument constructor) constractor will execute after that SubClass defoult(no-argument constructor) 
+        Constrctor will execute.(practice it old notes).
+==================================================================================
+Scanarios 2:
+==================================================================================
+	if SubClass extends SuperClass and we are creating object of SubClass during insilization Parameterise constrocter will call on that time
+	First SuperClass defoult(no-argument constructor) constractor will execute after that SubClass Parameterise Constrctor will execute.
+
+==================================================================================
+Scanarios 3:
+==================================================================================
+	if SubClass extends SuperClass and we are creating object of SubClass during insilization Parameterize constructor
+	will call on that time
+	First SuperClass default(no-argument constructor) constractor will execute after that SubClass Parameterise Constrctor will execute. 
+	Super class also have
+	parameterised constructor but only execute superclass defoult(no-argument constructor) constructor.
+==================================================================================
+Scanarios 4:
+==================================================================================
+	if SubClass extends SuperClass and we are creating object of SubClass during insilization Parameterise constrocter will call on that time
+	First SuperClass defoult constractor will execute after that SubClass Parameterise Constrctor will execute. super class also have
+	parameterised constructor but only execute superclass defoult(no-argument constructor) constructor.if you want to excute superclass 
+	parameterised than u need to call in SubClass parameterised super() method.
+==================================================================================
+Scanarios 5:
+=================================================================================
+	if SuperClass dose not have default(no-argument constructor) and subclass extends that SuperClass.
+	and trying to create subclass defoult(no-argument constructor) than compile time error getting.
+
+=================================================================================
+final :
+=================================================================================
+Defination: Final is a keyword in java, Which is applicable to classes, methods, and variables.
+
+	   a) If we declare class as final than we cannot extends that class.
+	   b) Every method present inside the final class is always final and default 
+              but every variable present inside the final class need not be final.
+	   c) if we declare method as final than we can not override that method.
+	   d) if we declare variable as final than we can not modify that variable. 
+	      during variable creation we are inisilaze that value also. It became constant.
+     Imp   e) if we declare variable final without inisilaze thn comapile time error getting otherwise use in creating constructor 
+	      bcoz when object creation is start thn 
+	      inisilazition is must.
+
+Note: The main advantage of the final keyword is we can achieve security and we can provide a unique implementation. 
+      But the main disadvantage of the final keyword is we are missing key benefits of OOPs like Inheritance(Because of the final class), 
+      Polymorphism(Because of the final method).
+
+===================================================================================
+OPPS:
+===================================================================================
+In Object-Oriented Programming System there is 4 pillar in java 
+
+1: Inheritance
+2: Polymorphism
+3: Abstraction
+4: Encapsulation
+===================================================================================
+Inheritance:
+===================================================================================
+	1) Inheritance is an important pillar of OOPs(Object-Oriented Programming System).
+	2) It is a mechanism in java, which means accessing parent class properties in child class or super class properties in sub class.
+        3) Inheritance supports the concept of “reusability”, Means when ever we are wrting code we know we got some common code, 
+	   common method than we can write in seprate class and we can extends that class when ever we need that funcationlity.
+	4) Using  extends or implemnet keyword we can achive inheritance.
+
+Types of Inheritance in Java:
+
+	1) Single Inheritance:
+		single inheritance means, subclasse accessing the features of one superclass.
+
+	2) Multilevel Inheritance:
+		Multilevel Inheritance means one child class accessing properties of paraent class and  
+		that child class also have one sub child class which is accessing child class and parent class both properties.
+
+	3) Hierarchical Inheritance:
+		Hierarchical Inheritance means, we have one parent class and so many child class.
+		Example child1 child2,child3 all are accessing parent class properties.
+
+	4) Multiple Inheritance:
+		Multiple inheritances means, having one child class and many parent class.
+		In java dose not support class level Multiple inheritances.
+		Java support Multiple Inheritance in interface level in java 1.8.
+
+	5) Hybrid Inheritance:
+		 Hybrid Inheritance means It is a mix of two or more of the above types of inheritance. Since java doesn’t support multiple inheritances 
+		 With classes, hybrid inheritance is also not possible with classes. 
+		 In java, we can achieve hybrid inheritance only through Interfaces.
+=====================================================================================
+2 Polymoriphism:
+=====================================================================================
+Defination : Many ways to respresent single entity is known as polymorphism
+There are 2 Type of Polymoriphism:
+
+Compile time Polymoriphism /  	Run time Polymoriphism
+Static poloymoriphisam    /    Dynamic Polymoriphism
+early binding            /    Late binding
+
+1.Compile time Polymoriphism achive by method overloading
+2.Run time Polymoriphism achive by method overriding.
+
+Method overloading:
+1.Method overloadig means method name must be same but parameter should be different 
+  except this compiler wont check return type and access modifier.
+2.Method overloadig is also known as "Ealy binding" because it will check on compile time.
+exmple: In class created muiltiple contstructor in class.
+Employee emp = new Employee(); 
+Employee emp1 = new Employee(1,"Vinod");
+ Ex-(jav.txt)
+-------------------------------------------------------------
+  Scenario-
+-------------------------------------------------------------
+if method parametrer is increasing order and u r passing value is decreasing type java automaticaly convert.
+ex- When i am declaring double value having data type double we can also pass int but when it is int and we are passing double then it will throw compile time error.
+
+
+Method Overridding:
+1.Method overriding is a run-time polymorphism /Dynamic polymorphism.
+2.In method overriding, methods must have the same name and same signature.
+3.Method overriding always needs inheritance.In method overriding, the return type must be the same.
+3.Dynamic binding is being used for overriding methods.
+4.Private and static and final methods can’t be overridden.
+5.In methodoverridding we can not reduce the scope of accessmodifier we can increase the scope of accessmodifier
+like protected to public.
+--------------------------------------------------------------
+Scenario
+--------------------------------------------------------------
+If child class method throws any checked exception compulsary parent class method should throw the same exception.
+If parent class method throw any checked exception then child class compulsary thow  checked exception. 
+If parent class throw any unchecked exception then child class dont have any restrictions to throw same exception.
+
+======================================================================================================================
+Abstraction-
+1.Hiding internal implementation just showing Functionality is known as Abstraction.
+2.here is this example we are using funactinality of Arraylist like add ,remove,set but we dont know what internal implementaion.
+example :
+ArayList<String> arrlist= new ArayList<>();
+arrlist.add("Vinod");
+arrlist.remove();
+arrlist.set(0, "Adi")
+
+===========================================================================================================================
+Encapsulation-
+1.Wrapping up of data into a single unit is known as encapsulation.
+ for example we create one entity class in side entity class we declare variable private means securing that variable out side person can not access.
+ we are creating method in entity class to get the value and set the value.
+2.it is also known as a combination of data-hiding and abstraction.
+3.Datahiding means outside person cannot acees the data without creating object of that entity.
+
+============================================================================================================================
+
+String-
+1.String is Final class.It is present in java.lang package
+2.String is immutable once the object is created we cannot modify it.If we are going to modify then it will create new string 
+3.Two ways we can create object of string
+a.Using String literals
+Example: String s = "Vinod";
+b.Using "new" keyword
+Example : String str= new String("Sejal");
+
+4.When we create String using String literals it will go and store in side heap area in "Spring Constant Pool" area.
+5.When we create String using "new" keyword it will go and store in side heap area.
+
+-----------------------------------------------------------
+Scenario
+----------------------------------------------------------
+Why String is immutable..??
+Ans: bcos of security resaon.
+
+Why we cannot modify string ?
+Ans: Because String class is a final class. if a class is declared as final then inside class whatever method is declared it will be final or default.
+but every variable present inside the final class need not be final.
+
+=====================================================================================
+Comparison:
+1. "=="
+when u check both are refrenceing same object thn give true
+== is refrence tpye, it will check both are object referencing same or not. if same return true or fasle.
+example :
+String s1="Vinod";
+String s2="Vinod";
+if (s1==s2){
+true
+}
+s1 and s2 refrencing same object. it will store inside string constant pool area.
+2.equals():
+when u only need to check value use .equals(). if both are same give true otherwise fasle.
+
+example :
+String s1 = new String("Sejal");
+String s2 = new String("Sejal");
+
+if(s1.equals(s2)){
+	true
+}
+
+========================================================================================
+StringBuffer:
+1.StringBuffer operations are thread-safe and synchronized.
+2.StringBuffer is to used when multiple threads are working on the same String.
+3.StringBuffer performance is slower when compared to StringBuilder.
+4.StringBuffer are mutable.
+5.When we create object of StringBuffer it will go and store heap area.
+Syntax: StringBuffer var = new StringBuffer(str);
+6.Performace by StringBuffre is faster thn string.
+
+StringBuilder:
+1.StringBuilder operations are not thread-safe are not-synchronized.
+2.StringBuilder is used in a single-threaded environment.
+3.StringBuilder performance is faster when compared to StringBuffer
+4.StringBuilder are mutable.
+5.When we create object of StringBuffer it will go and store heap area.
+6.Performace by StringBuffre is faster thn string.
+When we create object of StringBuilder it will go and store heap area.Bcos of new keyword
+Syntax: StringBuilder var = new StringBuilder(str);
+
+Note: Synchronized keyword means only one thread can access at a time. nonsynchronized mns multiple threads can access at a time.
+
+===============================================================================================
+Diffrence between array and arraylist 
+1..Arrays are linear data structures providing functionality to add elements in a continuous manner in memory address space.
+   Two ay we can create arrays:
+	1.int arr[] = new int[10];
+	2.int[] arr ={10,14,35,68};
+2.The array is a fixed-size data structure. when u create array at time u should declare size also. 
+and once array is crerated u cannot increase size of array.
+3.Array can store or contain both "primitive" data types as well as "Objects".
+
+4.Array wont provide data type-safety.
+Example
+	String temp[] = new String[2]; // creates a string array of size 2
+	temp[0] = new Integer(12);   // throws ArrayStoreException, trying to add Integer object in String[]
+5. While Each array object has the length variable which returns the length of the array.
+
+------------------------------------------------------------------------------------------------------
+ArrayList:
+------------------------------------------------------------------------------------------------------
+Defination: ArrayList is a implemantion class of List Interface.
+1.ArrayList is a class present in java.util package.
+2.ArrayList is not fixed side, ArrayList is knows as growable nature, You can keep on adding what ever data u have.
+3.ArrayList store object only. if u add primitive datatpye, internally it will convert Object.
+Example:
+ArrayList arraylistobject = new ArrayList();
+arraylistobject.add(23); // try to add 23 (primitive)
+
+JVM internally converting primitives to equivalent objects
+ensures that only objects are added to the arraylist object.
+above example internally works like this
+
+arraylistobject.add( new Integer(23)); // Converted int primitive to Integer object and added to arraylistobject
+4.ArrayList provide data type safety. You can create ArrayList, if u are not declare any data type u can add any things.
+
+Example :
+ArrayList al= new ArrayList();
+al.add(124);
+al.add("Vinod");
+al.add(5435.6456);
+
+5.Length of the ArrayList is provided by the size().
+=================================================================================================
+Hashmap:
+=================================================================================================
+Defination: Hashmap is implemenation class of map interface. its precent in "java.util" pakg.
+2.Hashmap follow underlying structure is "HashTable", but it is not synchronized.
+  synchronized means at a one thread can access.
+3.Hashmap always stored in the form of key-value pair.
+4.When ever we create object of hashmap and trying to add value in hashmap.
+  it is going to create array of buckets, default size is 16.each bucket call "node", node means Linklist.
+  basiclly node will store 4 infomation "Key","HashCode","Value","Next node". Next node means store avalible of next node address.
+5.hashmap is not allow or follow inserstion ornder.
+6.hashmap is accept "null" as key and that key always store in [0]th index.
+7.if u trying to insert duplicate key hashmap will insert duplicate (means always take latest key value).
+8.loading factor of hashmap is 0.75 means when we are tring to insert more 12 value in hashmap. it will automatically increse the
+  capacity of load factor/ratio (0.75) and increse size of hashmap(16).
+----------------------------------------------------------------------------------------------
+Internally working of Hashmap:
+---------------------------------------------------------------------------------------------
+When we create object of hashmap and we are going to insert value hashmap.
+       Map<String, Integer> map = new HashMap<>();
+	map.put("Vinod",101);
+
+ put() method take key and calculate hashcode of that key.
+
+once we get hashcode of that key, after that perform some moduler operations using formaula (hashcode &(n-1)) to get index number.
+based on index number data going to store in side bucket.
+while storing data inside bucket, in that bucket one node(LinkList) will be created
+basicly node will store 4 infomation "Key","HashCode","Value","Next node". Next node means store avalible of next node address.
+
+
+Note: to make hash map thread safe 
+-> using Collections.synchronizedMap() method we can make hash map thread safe 
+Example: 
+Map<String, Integer> map = new HashMap<>();
+	map.put("Vinod",101);
+
+Collections.synchronizedMap(map);
+
+---------------------------------------------------------------------------------------
+Hashcode Collision/hashmap collision
+---------------------------------------------------------------------------------------
+Ans: When ever we are trying to insert in hashmap both key hashcode will be same,
+At the time collision will occure. both are going to store same index number. in side index store
+["hasscode of first key","key","value","next node reference"] ------["hascode of second key","key","value","null"]
+
+example:
+String s1="FB";
+String s2="Ea";
+System.out.println(s1.hashCode()+" "+s2.hashCode());
+
+Map<String, Integer> map = new HashMap<>();
+map.put(s1, 1);
+map.put(s2, 2);
+
+=================================================================================
+Concurrent Hashmap:
+================================================================================
+Defination: Concurrent Hashmap is implementaion class of map interfac, its present in java.util.pkg.
+ ConcurrentHashMap class is introduced in JDK 1.5 Version.
+1.The underlined data structure for ConcurrentHashMap is "Hashtable".
+2.ConcurrentHashMap class is thread-safe i.e. multiple threads can operate on a single object without any complications.
+3.Concurrent hashmap it works on segment level lock.(Default size is 16 and load factor is 0.75)
+4.Segment level locks means It perform read operation on any thread But while updating It will lock the bucket level.
+Ex-If any update happened on 0 th bucket then other thread need to wait till it get release.
+
+=====================================================================
+Singleton
+======================================================================
+->A singleton class is a class that can have only one object (an instance of the class) at a time.
+ After the first time, if we try to instantiate the Singleton class, the new variable also points to the first instance created.
+
+->The main purpose of a Singleton class is to restrict the limit of the number of object creation to only one.
+
+->The memory space wastage does not occur with the use of the singleton class because it restricts the instance creation.
+Forms of Singleton Class Pattern
+There are two forms of singleton design pattern, which are:
+Early Instantiation: The object creation takes place at the load time.
+Lazy Instantiation: The object creation is done according to the requirement.
+
+example:
+ 
+public class Singleton {
+	
+	private Singleton() {
+		
+	}
+
+	public static Singleton instance;
+	
+	public static Singleton getInstance() {
+		if(instance==null) {
+			instance = new Singleton();
+			
+		}
+		
+		return instance;
+	}
+}
+
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Singleton a =Singleton.getInstance();
+		
+		Singleton aa =Singleton.getInstance();
+		
+		Singleton ab =Singleton.getInstance();
+		
+	}
+}
+
+*****************
+=====================================================================
+Using Comparable Interface
+=====================================================================
+1.A comparable object is capable of comparing itself with another object. 
+2.The class itself must implements the java.lang.Comparable interface to compare its instances. 
+3.Consider a Movie class that has members like, rating, name, year. Suppose we wish to sort a list of Movies based on year of release. 
+We can implement the Comparable interface with the Movie class, and we override the method compareTo() of Comparable interface. 
+----------------------------------------------------------------------------------------------
+Using Comparator
+----------------------------------------------------------------------------------------------
+Unlike Comparable, Comparator is external to the element type we are comparing. It’s a separate class.
+ We create multiple separate classes (that implement Comparator) to compare by different members.
+Collections class has a second sort() method and it takes Comparator. The sort() method invokes the compare() to sort objects.
+To compare movies by Rating, we need to do 3 things : 
+Create a class that implements Comparator (and thus the compare() method that does the work previously done by compareTo()).
+Make an instance of the Comparator class.
+Call the overloaded sort() method, giving it both the list and the instance of the class that implements Comparator.
+*******************************
+---------------------------------------------------------------------------------------
+Solid principles
+---------------------------------------------------------------------------------------
+SOLID Principles Java
+In Java, SOLID principles are an object-oriented approach that are applied to software structure design. 
+It is conceptualized by Robert C. Martin (also known as Uncle Bob). 
+These five principles have changed the world of object-oriented programming, and also changed the way of writing software. 
+It also ensures that the software is modular, easy to understand, debug, and refactor. 
+In this section, we will discuss SOLID principles in Java with proper example.
+The word SOLID acronym for:
+
+Single Responsibility Principle (SRP)
+Open-Closed Principle (OCP)
+Liskov Substitution Principle (LSP)
+Interface Segregation Principle (ISP)
+Dependency Inversion Principle (DIP).
+--------------------------------------------------------------------------------------------------------------------------------
+Interface -
+----------------------------------------------------------------------------------------------------------------------------------
+1.If we dont know anything about implementation and we have requirement specification then we should go for interface.
+Whenever we want to declare the method and there is no implementation then we can use Interface
+2.Inside interface every method is public and abstract whether we are declaring it or not
+Hence interface is considered as 100% pure abstract class
+3.Every variable present inside interface is always public,static and final whether we declare it or not 
+4.we can't declare interface with private,protected and transient variables 
+5.For interface variables compulsary we should perform initialization at the time of declaration otherwise will get compile time error 
+6.Inside interface we can't declare constructor.we cannot create the object of interface.
+7.Inside interface we can't declare Instance and static block otherwise will get compile time error 
+--------------------------------------------------------------------------------------------------------------------------------------
+Abstract -
+--------------------------------------------------------------------------------------------------------------------------------------
+1.If we are talking about implementation but not completely then we should go for abstract class.
+2.Every method is public and abstract whether we are declaring it or not
+3.In addition to abstract methods we can take concrete method also
+4.There is no restriction on abstract class method modifier 
+5.The variable present inside Abstract class need not to be public,static and final whether we declare it or not 
+There are no restriction on abstract class variable modifier
+6.For abstract class variable it is not required to perform initialization at the time of declaration 
+7.Inside Abstract class we can declare instance and static block
+8.Inside Abstract class we can declare constructor which will be executed at the time of child object executions
+
+---------------------------------------------------------------------------------------------------------------------------------------
+Static :
+---------------------------------------------------------------------------------------------------------------------------------------
+1. Static block excuted only once when class is loaded
+2. Static is block excuted only once in program before main method.
+3. First Static block will excute after main method.
+
+==============================================================================================
+how to make our class is immutable ??
+==============================================================================================
+
+Step 1: To make class is final bcoz no class can exdents that class and create object of that class.
+
+Step 2: To declare all variable is final Bcoz when object creation is happen that time inisilation all the variable at the same time.
+
+Step 3: To create getter method to get value.
+
+===========================================================================================
+
+
